@@ -66,14 +66,14 @@ export default function Home() {
     <main
       className={`${inter.className} h-[80vh] w-full flex flex-col justify-center items-center`}
     >
-      <div className="flex gap-5 p-10 justify-center items-center">
+      <div className="flex flex-col md:flex-row gap-5  justify-center items-center">
         <div className='flex-1'>
         <Box className="w-full" width="10" />
 
         </div>
-        <div>
+        <div className='w-full flex flex-col justify-center items-center md:items-start'>
           <LoginHome />
-          <p className="text-xl text-primary2">Para brindarte un mejor servicio, te invitamos a iniciar sesión en InfoJob.</p>
+          <p className="text-xl text-primary2 p-2 md:p-0 text-center md:text-left md:whitespace-nowrap">Para brindarte un mejor servicio, te invitamos a iniciar sesión en InfoJob.</p>
         </div>
       </div>
       <ButtonFill

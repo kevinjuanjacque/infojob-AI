@@ -9,8 +9,6 @@ import {
   CashIcon,
   ClipboardListIcon,
   ExclamationIcon,
-  ThumbUpIcon,
-  IdentificationIcon,
   MinusCircleIcon,
 } from '@heroicons/react/solid';
 import LoadingView from '@infojob/components/LoadingView';
@@ -18,6 +16,7 @@ import { Score } from '@infojob/components/Score';
 import { getModalidad } from '@infojob/functions/modality';
 import Api from '@infojob/utils/Api';
 import { Badge, Button, Callout, Card, Divider, Icon } from '@tremor/react';
+import { getCookie } from 'cookies-next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
