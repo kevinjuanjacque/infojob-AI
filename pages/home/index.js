@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { CardOffer } from "@infojob/components/CardOffer"
 import ErrorView from "@infojob/components/Error"
 import LoadingView from "@infojob/components/LoadingView"
