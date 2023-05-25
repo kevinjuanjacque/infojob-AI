@@ -8,6 +8,7 @@ import LoadingView from "@infojob/components/LoadingView";
 
 import Api from "@infojob/utils/Api"
 import { Button, Callout, Card } from "@tremor/react";
+import { getCookie } from "cookies-next";
 import { useRouter } from "next/router"
 import { useCallback, useEffect, useRef, useState } from "react"
 import Webcam from "react-webcam";
