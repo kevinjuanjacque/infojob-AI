@@ -95,7 +95,10 @@ export const CardOffer = ({ offer }) => {
 
     const onClickCaculateEvaluation = async () => {
         try {
-            const resp = await Api.post('/api/offer/evaluated', { id:offer.id });
+
+            const data = await Api.post('api/offer/info',{ id:offer.id });
+            const {msg} = data.data
+            const resp = await Api.post('/api/offer/evaluated', { msg });
             setLoadingEvaluation(false)
 
             setEvaluation(resp.data);

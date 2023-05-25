@@ -67,22 +67,24 @@ export default function Home() {
     const [LoadingEvaluation, setLoadingEvaluation] = useState(false)
 
 
-    const onClickCaculateEvaluation = async (id) => {
+    const onClickCaculateEvaluation = async () => {
+      try {
 
-        try {
-            const resp = await Api.post('/api/offer/evaluated', { id });
-            setLoadingEvaluation(false)
+          const data = await Api.post('api/offer/info',{ id:offer.id });
+          const {msg} = data.data
+          const resp = await Api.post('/api/offer/evaluated', { msg });
+          setLoadingEvaluation(false)
 
-            setEvaluation(resp.data);
-        } catch (error) {
-            setLoadingEvaluation(false)
+          setEvaluation(resp.data);
+      } catch (error) {
+          setLoadingEvaluation(false)
 
-            setEvaluation({
-                score: '-',
-                msg: 'Ocurrio un error, al evaluar tu perfil para esta oferta'
-            })
-        }
-    }
+          setEvaluation({
+              score: '-',
+              msg: 'Ocurrio un error, al evaluar tu perfil para esta oferta'
+          })
+      }
+  }
     
 
   useEffect(() => {
