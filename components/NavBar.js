@@ -33,8 +33,11 @@ export const NavBar = () => {
 
           <button
             onClick={() => {
-              if (Search) {
+              if (Search && router.pathname !== '/') {
                 router.push(`/search/${Search}`)
+              }
+              if (router.pathname === '/') {
+                alert('Debes iniciar session primero')
               }
             }}
             className=" bg-transparent px-2"

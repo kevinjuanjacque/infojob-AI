@@ -1,4 +1,5 @@
 import { CardOffer } from '@infojob/components/CardOffer'
+import LoadingView from '@infojob/components/LoadingView'
 import Api from '@infojob/utils/Api'
 import { Button } from '@tremor/react'
 import { useRouter } from 'next/router'
@@ -37,13 +38,17 @@ const Search = () => {
         <strong className="text-black">{search}</strong>
       </div>
       <div className="w-full h-[0.5px] bg-gray my-5 px-2"></div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-2">
-        {Offers.map((offer, index) => (
-          <Fragment key={index}>
-            <CardOffer offer={offer} />
-          </Fragment>
-        ))}
-      </div>
+      {Loading ? (
+        <LoadingView text="Cargando busqueda..." />
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-2">
+          {Offers.map((offer, index) => (
+            <Fragment key={index}>
+              <CardOffer offer={offer} />
+            </Fragment>
+          ))}
+        </div>
+      )}
       <div className="flex justify-center gap-2 py-5">
         <Button
           disabled={Page <= 1}

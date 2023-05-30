@@ -38,7 +38,7 @@ export default function Home() {
             const { access_token, refresh_token } = response.data
             setCookie('access_token', access_token, {
               //response.data.expires_in is miliseconds to date for expires
-              maxAge: 0.1,
+              maxAge: 400,
             })
             setCookie('refresh_token', refresh_token)
             router.push('/home')

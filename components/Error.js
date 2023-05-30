@@ -19,10 +19,10 @@ const ErrorView = ({
           icon={ArrowLeftIcon}
           className=" text-white px-4 py-2 rounded-md"
           onClick={() => {
-            router.back()
+            router.reload()
           }}
         >
-          Volver
+          Volver a intentar
         </Button>
       </div>
     </div>

@@ -31,7 +31,7 @@ const ApiClient = () => {
             ),
           )
           setCookie('access_token', res.data.access_token, {
-            maxAge: 0.1,
+            maxAge: 400,
           })
           setCookie('refresh_token', res.data.refresh_token)
 
