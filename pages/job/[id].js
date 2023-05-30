@@ -199,7 +199,6 @@ export default function Home() {
               </div>
             </section>
           </section>
-          <section>Compartir</section>
         </div>
       </div>
 

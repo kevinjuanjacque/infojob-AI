@@ -109,7 +109,7 @@ const index = () => {
             clearInterval(interval)
             setLoading(false)
           }
-        }, 3000)
+        }, 60000)
       } catch (error) {
         setError(true)
       }
