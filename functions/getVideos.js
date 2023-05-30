@@ -1,20 +1,14 @@
-import { createFunction } from "@infojob/functions/createVideo"
-import axios from "axios"
-
-
+import { createFunction } from '@infojob/functions/createVideo'
+import axios from 'axios'
 
 export default async function getVideos(text) {
-    try {
+  try {
+    const introductionVideo = await createFunction(text)
 
-        const introductionVideo = await createFunction(text)
-
-
-        return{
-            video:introductionVideo.data.data.video_id,
-        }
-
-    } catch (error) {
-        console.log(error)
-        throw error
+    return {
+      video: introductionVideo.data.data.video_id,
     }
+  } catch (error) {
+    throw error
+  }
 }

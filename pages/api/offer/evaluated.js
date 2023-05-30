@@ -1,20 +1,19 @@
-
-import { ChatCompletionRequestMessageRoleEnum, Configuration, OpenAIApi } from "openai"
-
-
+import {
+  ChatCompletionRequestMessageRoleEnum,
+  Configuration,
+  OpenAIApi,
+} from 'openai'
 
 const configuration = new Configuration({
-    apiKey: process.env.TOKEN_OPENIA
+  apiKey: process.env.TOKEN_OPENIA,
 })
 
 const openai = new OpenAIApi(configuration)
 
-
-
-const INITIAL_MESSAGES=[
-    {
-        role: ChatCompletionRequestMessageRoleEnum.System,
-        content:`Quiero que cuando te pase la descripción de un trabajo, mas el información del usuario, le des una nota del 1 al 10, segun lo que el perfil del usuario se adapte a la descripción de la oferta.
+const INITIAL_MESSAGES = [
+  {
+    role: ChatCompletionRequestMessageRoleEnum.System,
+    content: `Quiero que cuando te pase la descripción de un trabajo, mas el información del usuario, le des una nota del 1 al 10, segun lo que el perfil del usuario se adapte a la descripción de la oferta.
 
         el formato de respuesta JSON sin texto, asi como el siguiente ejemplo:
         
@@ -28,41 +27,36 @@ const INITIAL_MESSAGES=[
         {
            "score":7,
           "msg":"en la oferta de trabajo se menciona las skill sobre la herramienta de react, que no posee tu informacion personal, pero si contienes las skill sobre bases de datos y diferentes herramientas de frontend"
-        }`
-    }
+        }`,
+  },
 ]
 
-
-export default async function Evaluated(req,res) {
-try {
-    
-    const {msg} = req.body;
-
+export default async function Evaluated(req, res) {
+  try {
+    const { msg } = req.body
 
     const completion = await openai.createChatCompletion({
-        model:"gpt-3.5-turbo",
-        messages:[
-            ...INITIAL_MESSAGES,
-            {
-                role: ChatCompletionRequestMessageRoleEnum.User,
-                content:msg
-            }
-        ]
+      model: 'gpt-3.5-turbo',
+      messages: [
+        ...INITIAL_MESSAGES,
+        {
+          role: ChatCompletionRequestMessageRoleEnum.User,
+          content: msg,
+        },
+      ],
     })
 
     try {
-        const response = JSON.parse(completion.data.choices[0].message?.content);
-        res.json(response)
+      const response = JSON.parse(completion.data.choices[0].message?.content)
+      res.json(response)
     } catch (error) {
-        res.status(500).json({
-            msg:'no se pudo parsear el json response de la ia'
-        })
+      res.status(500).json({
+        msg: 'no se pudo parsear el json response de la ia',
+      })
     }
-    
-} catch (error) {
-    console.log(error.response.data);
+  } catch (error) {
     res.status(500).json({
-        error
+      error,
     })
-}
+  }
 }
