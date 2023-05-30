@@ -147,7 +147,7 @@ export default function index() {
           </div>
         </div>
       </motion.div>
-      <section className="w-full my-5 flex justify-between">
+      <section className="w-full my-5 flex justify-around">
         <Icon
           size="lg"
           className=" bg-white shadow-md rounded-full"
