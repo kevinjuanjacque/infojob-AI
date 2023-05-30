@@ -15,7 +15,7 @@ const readFile = (req, save) => {
   const option = {}
 
   if (save) {
-    option.uploadDir = path.join(process.cwd(), 'public', 'uploads')
+    option.uploadDir = path.join(process.cwd(), 'files', 'uploads')
     option.filename = (name, ext, path, form) => {
       return `${Date.now().toString()}-${path.originalFilename}`
     }
