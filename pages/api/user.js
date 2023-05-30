@@ -55,7 +55,6 @@ export default async function User(req, res) {
       offer: offer.data.offers,
     })
   } catch (error) {
-    console.log(error.response.data)
     res.status(500).json({ error })
   }
 }
